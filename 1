@@ -5,25 +5,25 @@
 int main(void)
 {
     int b = 0;
-    int n = get_int("Количество чисел: ");
+    int n;
+    do
+    {
+        n = get_int("Количество чисел: ");
+    }
+    while ((n > 100) || (n < 1));
     int a[n];
     for (int i = 0; i < n; i++)
     {
         a[i] = get_int("Введите число %i: ", (i+1));
-        if ((a[i] <= 0) || (a[i] > 100))
+        if ((a[i] <= -100) || (a[i] > 100))
         {
-            b++;
+            printf("Число должно быть от 1 до 100\n");
+            i--;
         }
     }
-    if (!(b == 0))
+    for (int i = n-1; i >= 0; i--)
     {
-        printf("Число должно быть от 1 до 100");
+        printf("%i ", a[i]);
     }
-    else
-    {
-        for (int i = n-1; i >= 0; i--)
-        {
-            printf("%i ", a[i]);
-        }
-    }
+    printf("\n");
 }
